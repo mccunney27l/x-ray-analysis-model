@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulated X-Ray Analyzer (Long Bones Focus)</title>
+    <title>Simulated X-Ray Analyzer (Fracture Focus)</title>
     <!-- Load Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -45,7 +45,7 @@
                 <span>Simulated X-Ray Analyzer</span>
             </h1>
             <p class="text-gray-500 mt-2 text-sm">
-                Focusing on the **humerus, femur, radius, ulna, tibia, and fibula**.
+                Analysis focuses exclusively on fracture **type** and bone integrity.
             </p>
         </header>
 
@@ -121,43 +121,43 @@
 
     <script>
         // --- Simulated Data for Educational Purposes (NO API KEY NEEDED) ---
-        // Reports are now strictly focused on: humerus, femur, radius, ulna, tibia, and fibula.
+        // Reports are now strictly focused on fracture type and general bone location (e.g., "long bone").
         const SIMULATED_REPORTS = [
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
-The image appears to show a healthy **Femur** (thigh bone).
+The image appears to show a healthy long bone from a limb.
 
-**Finding:** No fracture line or break is visible. The bone density is excellent, suggesting a normal, strong structure for this major weight-bearing bone. This is a great example of a normal long bone X-ray!`,
-
-            `**Disclaimer: This is a simulated educational description, not a medical report.**
-
-This simulated X-ray is characteristic of a **Humerus** (upper arm bone).
-
-**Finding:** There is a **spiral fracture** observed in the distal (lower) third of the shaft. The break twists around the bone, which often suggests a rotational injury. There is minimal displacement, but the fracture line is clear.`,
+**Finding:** No fracture line or break is visible. The bone density is excellent, suggesting a normal, strong structure for this weight-bearing bone. This is a great example of a normal X-ray!`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
-The image shows the two bones of the forearm: **Radius and Ulna**.
+This simulated X-ray is of a long bone (possibly upper arm).
 
-**Finding:** A complex injury is simulated: both the radius and ulna have **transverse fractures** near the middle of the forearm. The fragments are overlapping (displaced), indicating a significant impact injury.`,
-
-            `**Disclaimer: This is a simulated educational description, not a medical report.**
-
-This view is of the lower leg, featuring the **Tibia** (shin bone).
-
-**Finding:** A **stable stress fracture** is visible in the proximal (upper) third of the tibia. This appears as subtle localized thickening of the bone cortex, typical of repetitive strain rather than acute trauma. The fracture is non-displaced.`,
+**Finding:** There is a **spiral fracture** observed in the middle section of the shaft. The break twists along the long axis of the bone, which often suggests a rotational injury mechanism. There is minimal displacement, but the fracture line is distinct.`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
-The X-ray displays the distal portion of the lower leg, focusing on the **Fibula**.
+The image shows the two parallel bones of the forearm or lower leg.
 
-**Finding:** There is a distinct, **clean transverse fracture** near the lateral malleolus (the bump on the outside of the ankle). This is a simple break perpendicular to the long axis of the bone.`,
+**Finding:** A complex injury is simulated: both bones have **transverse fractures** near the middle of their shafts. The fragments are overlapping (displaced), indicating a significant impact injury to the region.`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
-This image showcases a **Humerus** near the shoulder joint.
+This view is of a weight-bearing long bone (e.g., lower leg).
 
-**Finding:** A **comminuted fracture** is present in the surgical neck of the humerus. This means the bone is broken into three or more fragments. This is a severe injury demonstrating complex fracture patterns.`
+**Finding:** A **stable stress fracture** is visible in the upper section of the bone. This appears as subtle localized thickening of the bone cortex, typical of repetitive strain rather than acute trauma. The fracture is non-displaced.`,
+
+            `**Disclaimer: This is a simulated educational description, not a medical report.**
+
+The X-ray displays the distal portion of a long bone near a joint.
+
+**Finding:** There is a distinct, **clean transverse fracture** present near the joint articulation point. The break runs perpendicularly across the long axis of the bone, suggesting a direct lateral force.`,
+
+            `**Disclaimer: This is a simulated educational description, not a medical report.**
+
+This image showcases the proximal end of a long bone near a major joint (e.g., shoulder or hip).
+
+**Finding:** A **comminuted fracture** is present in the neck region of the bone. This means the bone is broken into three or more fragments. This is a severe injury demonstrating complex fracture patterns.`
         ];
 
 
@@ -224,8 +224,8 @@ This image showcases a **Humerus** near the shoulder joint.
 
             if (file && file.type.startsWith('image/')) {
                 try {
-                    // For the non-API version, we only need the URL for the preview, not the Base64 data,
-                    // but keeping the base64 structure just in case of future API inclusion.
+                    // For the non-API version, we only need the URL for the preview, 
+                    // but we convert to base64 anyway for consistency with the file input structure.
                     base64Image = await fileToBase64(file); 
                     
                     // Show preview
@@ -263,7 +263,7 @@ This image showcases a **Humerus** near the shoulder joint.
             // Simulate network delay for a more realistic feel
             await new Promise(resolve => setTimeout(resolve, 1500)); 
 
-            // 1. Pick a random simulated report from the long bone list
+            // 1. Pick a random simulated report from the fracture type list
             const randomIndex = Math.floor(Math.random() * SIMULATED_REPORTS.length);
             const simulatedReport = SIMULATED_REPORTS[randomIndex];
 

@@ -121,8 +121,7 @@
 
     <script>
         // --- Simulated Data for Educational Purposes (NO API KEY NEEDED) ---
-        // Reports are now strictly focused on fracture type and general bone location (e.g., "long bone").
-        // **Simulated Certainty** line has been added to each report.
+        // Reports now include a new 'Low Certainty' case to simulate ambiguous results.
         const SIMULATED_REPORTS = [
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
@@ -170,7 +169,15 @@ This image showcases the proximal end of a long bone near a major joint (e.g., s
 
 **Finding:** A **comminuted fracture** is present in the neck region of the bone. This means the bone is broken into three or more fragments. This is a severe injury demonstrating complex fracture patterns.
 
-**Simulated Certainty:** Medium-High`
+**Simulated Certainty:** Medium-High`,
+
+            `**Disclaimer: This is a simulated educational description, not a medical report.**
+
+The image appears to show bones of the hand or foot. The image quality is low—it is blurry and slightly overexposed, making definitive feature identification difficult.
+
+**Finding:** There may be a very subtle break line (a **hairline fracture**) on one of the smaller bones, but it is obscured by poor image quality. It's difficult to confirm if this is artifact or a true fracture.
+
+**Simulated Certainty:** Low`
         ];
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulated X-Ray Analyzer</title>
+    <title>Simulated X-Ray Analyzer (Long Bones Focus)</title>
     <!-- Load Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -45,7 +45,7 @@
                 <span>Simulated X-Ray Analyzer</span>
             </h1>
             <p class="text-gray-500 mt-2 text-sm">
-                A simple, **standalone** educational tool that demonstrates analysis without needing an external API key.
+                Focusing on the **humerus, femur, radius, ulna, tibia, and fibula**.
             </p>
         </header>
 
@@ -121,36 +121,43 @@
 
     <script>
         // --- Simulated Data for Educational Purposes (NO API KEY NEEDED) ---
+        // Reports are now strictly focused on: humerus, femur, radius, ulna, tibia, and fibula.
         const SIMULATED_REPORTS = [
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
-The image appears to show a long bone, possibly from the arm or leg. The structure looks mostly intact and strong.
+The image appears to show a healthy **Femur** (thigh bone).
 
-**Finding:** No obvious fracture line or break is visible in this simulated view. The density of the bone appears consistent, suggesting a healthy structure. This is a great example of a normal X-ray!`,
-
-            `**Disclaimer: This is a simulated educational description, not a medical report.**
-
-This simulated X-ray seems to be of a wrist or hand. We can see multiple small bones grouped together.
-
-**Finding:** There is a faint, thin line suggesting a **hairline fracture** in one of the smaller bones. This type of break is often minor, but indicates the bone's integrity was compromised. Look closely for a subtle discontinuity in the bone's cortex.`,
+**Finding:** No fracture line or break is visible. The bone density is excellent, suggesting a normal, strong structure for this major weight-bearing bone. This is a great example of a normal long bone X-ray!`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
-The image strongly suggests a view of a lower limb bone, like the tibia. It is a weight-bearing bone.
+This simulated X-ray is characteristic of a **Humerus** (upper arm bone).
 
-**Finding:** There is a **clear transverse fracture** visible. A break runs almost perpendicular across the width of the bone, with a small degree of displacement (the two ends of the bone are slightly offset). This is a helpful example for understanding more severe breaks.`,
+**Finding:** There is a **spiral fracture** observed in the distal (lower) third of the shaft. The break twists around the bone, which often suggests a rotational injury. There is minimal displacement, but the fracture line is clear.`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
-This is likely a simulated image of a collarbone (clavicle). This is a common location for sports injuries.
+The image shows the two bones of the forearm: **Radius and Ulna**.
 
-**Finding:** An **oblique fracture** is observed near the middle of the bone. The break runs diagonally across the bone shaft. The fragments are aligned well, but the fracture line itself is prominent. Keep up the great work learning about bone structure!`,
-            
+**Finding:** A complex injury is simulated: both the radius and ulna have **transverse fractures** near the middle of the forearm. The fragments are overlapping (displaced), indicating a significant impact injury.`,
+
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
-The X-ray displays a view of the foot's bones (metatarsals). These small bones handle a lot of stress.
+This view is of the lower leg, featuring the **Tibia** (shin bone).
 
-**Finding:** This is a classic example of a **stress fracture**. You won't see a clear break, but rather a slight, localized increase in bone density (sclerosis) or a very thin, difficult-to-spot fracture line from repeated trauma. The bone needs rest to heal properly.`
+**Finding:** A **stable stress fracture** is visible in the proximal (upper) third of the tibia. This appears as subtle localized thickening of the bone cortex, typical of repetitive strain rather than acute trauma. The fracture is non-displaced.`,
+
+            `**Disclaimer: This is a simulated educational description, not a medical report.**
+
+The X-ray displays the distal portion of the lower leg, focusing on the **Fibula**.
+
+**Finding:** There is a distinct, **clean transverse fracture** near the lateral malleolus (the bump on the outside of the ankle). This is a simple break perpendicular to the long axis of the bone.`,
+
+            `**Disclaimer: This is a simulated educational description, not a medical report.**
+
+This image showcases a **Humerus** near the shoulder joint.
+
+**Finding:** A **comminuted fracture** is present in the surgical neck of the humerus. This means the bone is broken into three or more fragments. This is a severe injury demonstrating complex fracture patterns.`
         ];
 
 
@@ -217,7 +224,9 @@ The X-ray displays a view of the foot's bones (metatarsals). These small bones h
 
             if (file && file.type.startsWith('image/')) {
                 try {
-                    base64Image = await fileToBase64(file);
+                    // For the non-API version, we only need the URL for the preview, not the Base64 data,
+                    // but keeping the base64 structure just in case of future API inclusion.
+                    base64Image = await fileToBase64(file); 
                     
                     // Show preview
                     imagePreview.src = URL.createObjectURL(file);
@@ -254,7 +263,7 @@ The X-ray displays a view of the foot's bones (metatarsals). These small bones h
             // Simulate network delay for a more realistic feel
             await new Promise(resolve => setTimeout(resolve, 1500)); 
 
-            // 1. Pick a random simulated report
+            // 1. Pick a random simulated report from the long bone list
             const randomIndex = Math.floor(Math.random() * SIMULATED_REPORTS.length);
             const simulatedReport = SIMULATED_REPORTS[randomIndex];
 

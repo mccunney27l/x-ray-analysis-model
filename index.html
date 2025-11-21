@@ -121,7 +121,9 @@
     <script>
         // --- Configuration Constants ---
         const GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
-        const API_KEY = ""; // Placeholder for Canvas runtime environment
+        // NOTE: If you are running this outside of a development environment that provides the API key, 
+        // you MUST replace the empty string below with your actual API key:
+        const API_KEY = ""; 
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${API_KEY}`;
         
         // --- DOM Elements ---
@@ -219,6 +221,13 @@
                 showError("Please upload an X-ray image first.");
                 return;
             }
+            
+            // CRITICAL CHECK: In a real-world scenario (like GitHub Pages), you MUST enter your API key here.
+            if (API_KEY === "") {
+                 showError("API Connection Error: The API_KEY variable is empty. Please replace 'const API_KEY = \"\";' in the script with your actual Gemini API Key to make external calls.");
+                 return;
+            }
+
 
             clearResults();
             setLoading(true);
@@ -262,7 +271,8 @@
 
                     if (!response.ok) {
                         const errorData = await response.json();
-                        throw new Error(`API call failed: ${errorData.error?.message || response.statusText}`);
+                        // Throw specific error if we get an API response error
+                        throw new Error(`API call failed: Status ${response.status}. Message: ${errorData.error?.message || response.statusText}`);
                     }
 
                     result = await response.json();
@@ -270,9 +280,11 @@
 
                 } catch (e) {
                     retries++;
+                    console.error(`Attempt ${retries} failed:`, e.message);
+
                     if (retries >= maxRetries) {
-                        console.error("Gemini API Error after multiple retries:", e);
-                        showError("Failed to get analysis. Please try again.");
+                        // Final error message after all retries fail
+                        showError(`Image analysis failed after ${maxRetries} attempts. This is often a network or API configuration issue. See console for details.`);
                     } else {
                         const delay = Math.pow(2, retries) * 1000;
                         await new Promise(resolve => setTimeout(resolve, delay));
@@ -286,6 +298,7 @@
                 analysisResultText.textContent = result.candidates[0].content.parts[0].text;
                 analysisResultContainer.classList.remove('hidden');
             } else if (retries < maxRetries) {
+                // Only set a generic error if the response was successful but missing expected content
                 showError("Analysis completed but the model returned an empty response. Please try a different image.");
             }
         }

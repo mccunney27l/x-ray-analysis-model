@@ -122,42 +122,55 @@
     <script>
         // --- Simulated Data for Educational Purposes (NO API KEY NEEDED) ---
         // Reports are now strictly focused on fracture type and general bone location (e.g., "long bone").
+        // **Simulated Certainty** line has been added to each report.
         const SIMULATED_REPORTS = [
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
 The image appears to show a healthy long bone from a limb.
 
-**Finding:** No fracture line or break is visible. The bone density is excellent, suggesting a normal, strong structure for this weight-bearing bone. This is a great example of a normal X-ray!`,
+**Finding:** No fracture line or break is visible. The bone density is excellent, suggesting a normal, strong structure for this weight-bearing bone. This is a great example of a normal X-ray!
+
+**Simulated Certainty:** High`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
 This simulated X-ray is of a long bone (possibly upper arm).
 
-**Finding:** There is a **spiral fracture** observed in the middle section of the shaft. The break twists along the long axis of the bone, which often suggests a rotational injury mechanism. There is minimal displacement, but the fracture line is distinct.`,
+**Finding:** There is a **spiral fracture** observed in the middle section of the shaft. The break twists along the long axis of the bone, which often suggests a rotational injury mechanism. There is minimal displacement, but the fracture line is distinct.
+
+**Simulated Certainty:** Medium-High`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
 The image shows the two parallel bones of the forearm or lower leg.
 
-**Finding:** A complex injury is simulated: both bones have **transverse fractures** near the middle of their shafts. The fragments are overlapping (displaced), indicating a significant impact injury to the region.`,
+**Finding:** A complex injury is simulated: both bones have **transverse fractures** near the middle of their shafts. The fragments are overlapping (displaced), indicating a significant impact injury to the region.
+
+**Simulated Certainty:** High`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
 This view is of a weight-bearing long bone (e.g., lower leg).
 
-**Finding:** A **stable stress fracture** is visible in the upper section of the bone. This appears as subtle localized thickening of the bone cortex, typical of repetitive strain rather than acute trauma. The fracture is non-displaced.`,
+**Finding:** A **stable stress fracture** is visible in the upper section of the bone. This appears as subtle localized thickening of the bone cortex, typical of repetitive strain rather than acute trauma. The fracture is non-displaced.
+
+**Simulated Certainty:** Medium`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
 The X-ray displays the distal portion of a long bone near a joint.
 
-**Finding:** There is a distinct, **clean transverse fracture** present near the joint articulation point. The break runs perpendicularly across the long axis of the bone, suggesting a direct lateral force.`,
+**Finding:** There is a distinct, **clean transverse fracture** present near the joint articulation point. The break runs perpendicularly across the long axis of the bone, suggesting a direct lateral force.
+
+**Simulated Certainty:** High`,
 
             `**Disclaimer: This is a simulated educational description, not a medical report.**
 
 This image showcases the proximal end of a long bone near a major joint (e.g., shoulder or hip).
 
-**Finding:** A **comminuted fracture** is present in the neck region of the bone. This means the bone is broken into three or more fragments. This is a severe injury demonstrating complex fracture patterns.`
+**Finding:** A **comminuted fracture** is present in the neck region of the bone. This means the bone is broken into three or more fragments. This is a severe injury demonstrating complex fracture patterns.
+
+**Simulated Certainty:** Medium-High`
         ];
 
 
